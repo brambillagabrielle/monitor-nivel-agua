@@ -41,9 +41,12 @@ while True:
         # Lê uma linha do monitor serial
         leitura = arduino.readline().decode().strip()
 
+        # Realiza o cálculo do nível de água com a leitura do sensor
         nivel_agua = altura_sensor - float(leitura)
         print("Nível identificado da água: " + str(nivel_agua))
         
+        # Verifica se ocorreu uma alteração no nível da água em relação à 
+        # variação aceitável
         alteracao = 0
         if nivel_agua < nivel_minimo or nivel_agua > nivel_maximo:
             alteracao = 1
