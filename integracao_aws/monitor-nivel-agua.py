@@ -1,6 +1,5 @@
 import boto3
 import serial
-import datetime
 from credenciais import keys
 
 # Cria um cliente de SQS com as chaves de acesso criada para o usuário
@@ -45,9 +44,9 @@ while True:
         nivel_agua = altura_sensor - float(leitura)
         print("Nível identificado da água: " + str(nivel_agua))
         
-        alteracao = False
+        alteracao = 0
         if nivel_agua < nivel_minimo or nivel_agua > nivel_maximo:
-            alteracao = True
+            alteracao = 1
             # arduino.write('1'.encode())
             print('Alteração identificada')
         else:
