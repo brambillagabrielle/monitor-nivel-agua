@@ -24,17 +24,16 @@ def lambda_handler(event, context):
         timestamp = datetime.now()
         dados = message['body'].split("|")
         nivelColetado = round(float(dados[0]), 2)
-        alteracao = bool(dados[1])
+        alteracao = int(dados[1])
         
         try:
-            # se for uma alteracao, vai enviar um e-mail para o SNS
+            # se for uma alteracao (1), vai enviar um e-mail para o SNS
             if alteracao:
                 dataFormatada = timestamp.strftime("%d/%m/%Y, %H:%M:%S")
                 mensagemEmail = ('Olá!\n' + 
                 'Uma alteração foi identificada no nosso sensor relativo ao nível de água.' +
-                f'A coleta do dia {dataFormatada} indica que o nível da água está atualmente em {nivelColetado} cm.' +
+                f'\nA coleta do dia {dataFormatada} indica que o nível da água está atualmente em {nivelColetado} cm.' +
                 '\nAtt.')
-                
                 # publica a mensagem no tópico SNS, para ser enviada por e-mail
                 snsResponse = sns.publish(
                     TopicArn=TOPIC_ARN,

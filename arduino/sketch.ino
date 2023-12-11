@@ -1,6 +1,6 @@
 // pinos conectados no Arduino
-const int led_vermelho = 2;
-const int led_verde = 3;
+// const int led_vermelho = 2;
+// const int led_verde = 3;
 const int trig_pin = 4;
 const int echo_pin = 5;
 
