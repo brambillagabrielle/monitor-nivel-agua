@@ -1,7 +1,7 @@
 # Monitor de nível de água com Arduino e integração com a AWS
 
 ## Sobre o projeto
-O projeto consiste em um **monitor de nível de água** utilizando uma **placa Arduíno** e com uma **integração com a nuvem AWS**.<br>
+O projeto consiste em um **monitor de nível de água** utilizando uma **placa Arduíno** com uma **integração com a nuvem AWS**.<br>
 Para isso, foi utilizado um **sensor ultrassônico** para calcular o nível da água em um intervalo de tempo. As métricas coletadas são passadas para uma **aplicação em Python** que envia os dados para o serviços de **fila de mensageria SQS na AWS**.<br>
 O tratamento dos dados recebidos é de responsabilidade de uma **função Lambda**, a qual será inscrita no tópico da fila para receber as métricas coletadas. A função **envia um e-mail através de um tópico SNS** caso uma **alteração seja identificada** no nível da água, e também o dado coletado vai ser registrado em uma **tabela do DynamoDB para registros históricos**.
 
